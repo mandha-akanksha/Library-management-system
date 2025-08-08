@@ -4,53 +4,71 @@ import java.util.Scanner;
 
 //main class
 public class Main {
-   
     public static void main(String[] args) {
-        Library library = new Library();
         Scanner scanner = new Scanner(System.in);
+        Library library = new Library();
+        int choice = 0;
 
-        // User login
-        System.out.print("Enter your name: ");
-        String userName = scanner.nextLine();
-        library.login(userName);// calling login method
-
-        // Adding books to the library
-        library.addBook("Java");
-        library.addBook("Web");
-        library.addBook("SQL");
-
-        while (true) {
-            System.out.println("\n--- Library Menu ---");
-            System.out.println("1. Show Books");
-            System.out.println("2. Issue Book");
-            System.out.println("3. Return Book");
-            System.out.println("4. Exit");
-            System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+        while (choice != 7) {
+            System.out.println("\n ----Library Menu----");
+            System.out.println("1. Add Book");
+            System.out.println("2. Register User");
+            System.out.println("3. Show Books");
+            System.out.println("4. Show Users");
+            System.out.println("5. Issue Book");
+            System.out.println("6. Return Book");
+            System.out.println("7. Exit");
+            System.out.print("Enter choice: ");
+            choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
-                    library.showBooks();// for displaying all books
+                    System.out.print("Enter Book ID: ");
+                    int bookId = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter Book Title: ");
+                    String bookTitle = scanner.nextLine();
+                    library.addBook(bookId, bookTitle);
                     break;
+
                 case 2:
-                    System.out.print("Enter book title to issue: ");
-                    String issueTitle = scanner.nextLine();
-                    library.issueBook(issueTitle); //for try to issue
+                    System.out.print("Enter User ID: ");
+                    int userId = scanner.nextInt();
+                    System.out.print("Enter User Name: ");
+                    String userName = scanner.next();
+                    library.addUser(userId, userName);
                     break;
+
                 case 3:
-                    System.out.print("Enter book title to return: ");
-                    String returnTitle = scanner.nextLine();
-                    library.returnBook(returnTitle);// for try to return
+                    library.showBooks();
                     break;
+
                 case 4:
-                    System.out.println("Thank you, " + userName);
-                    return;
+                    library.showUsers();
+                    break;
+
+                case 5:
+                    System.out.print("Enter Book ID to issue:");
+                    library.issueBook(scanner.nextInt());
+                    break;
+
+                case 6:
+                    System.out.print("Enter Book ID to return:");
+                    library.returnBook(scanner.nextInt());
+                    break;
+
+                case 7:
+                    System.out.println("Exiting");
+                    break;
+
                 default:
                     System.out.println("Invalid choice");
             }
         }
+
     }
 }
+
+
 
 
