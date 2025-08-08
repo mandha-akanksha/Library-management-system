@@ -2,63 +2,55 @@ package Day3_task;
 import java.util.ArrayList;
 
 public class Library {
+    
     ArrayList<Book> books = new ArrayList<>();
-    User currentUser; // store currently logged in user
+    ArrayList<User> users = new ArrayList<>();
 
-    // Login
-    public void login(String name) {
-        currentUser = new User(name);// create new user
-        System.out.println("Welcome, " + currentUser.name );
+    public void addBook(int id, String title) {
+        books.add(new Book(id, title));
+        System.out.println("Book added");
     }
 
-    // Add Book to library
-    public void addBook(String title) {
-        books.add(new Book(title)); 
+    public void addUser(int userId, String name) {
+        users.add(new User(userId, name));
+        System.out.println("User registered");
     }
 
-    // Show all Books
     public void showBooks() {
-        System.out.println("\nBooks in Library:");
-        for (Book book : books) {
-            System.out.println("- " + book.title + " -> Issued: " + book.isIssued);
+        for (Book b : books) {
+            b.display();
         }
     }
 
-    // Issue a Book
-    public void issueBook(String title) {
-        for (Book book : books) {
-            if (book.title.equalsIgnoreCase(title)) // if book title matches
-            {
-                if (!book.isIssued)//if book not already issued
-                 {
-                    book.issue(); // issue the book
-                    System.out.println("Book issued to " + currentUser.name);
-                } else {
-                    System.out.println("Book is already issued");
-                }
+    public void showUsers() {
+        for (User u : users) {
+            u.display();
+        }
+    }
+
+    public void issueBook(int bookId) {
+        for (Book b : books) {
+            if (b.id == bookId && !b.isIssued) {
+                b.isIssued = true;
+                System.out.println("Book issued");
                 return;
             }
         }
-        System.out.println("Book not found");
+        System.out.println("Book not available");
     }
 
-    // Return a Book
-    public void returnBook(String title) {
-        for (Book book : books) {
-            if (book.title.equalsIgnoreCase(title)) // if book title matches
-            {
-                if (book.isIssued)//if book is issued
-                 {
-                    book.returnBook();// return the book
-                    System.out.println("Book returned by " + currentUser.name);
-                } else {
-                    System.out.println("Book was not issued.");
-                }
+    public void returnBook(int bookId) {
+        for (Book b : books) {
+            if (b.id == bookId && b.isIssued) {
+                b.isIssued = false;
+                System.out.println("Book returned");
                 return;
             }
         }
-        System.out.println("Book not found.");
+        System.out.println("Book not issued");
     }
-
-
 }
+
+
+
+
