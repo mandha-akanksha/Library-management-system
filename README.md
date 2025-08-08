@@ -7,7 +7,7 @@ I developed a simple Library Management System using Java, following Object-Orie
 - Java (JDK)
 - VS Code
 - Terminal
-- 
+  
 ## Features:
 - Add new books to the library
 - Register new users
