@@ -1,17 +1,24 @@
 package Day3_task;
 
 public class User {
-     String name;
 
-    public User(String name) {
+    int userId;
+    String name;
+
+    public User(int userId, String name) {
+        this.userId = userId;
         this.name = name;
     }
 
-    //to display user information
-    public void displayUser() {
-        System.out.println("User Name: " + name);
+    public void display() {
+        System.out.println("User ID: " +userId+ ", Name: " +name);
     }
 }
 
+
+
    
+
+
+
 
