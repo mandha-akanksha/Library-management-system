@@ -1,7 +1,7 @@
 # Task-3 : Library Management System ( using OOP)
 
 ## Objective:
-I developed a simple Library Management System using Java, following Object-Oriented Programming principles. This system allows users to add books, register users, issue and return books, and display records 
+I developed a simple Library Management System using Java, following Object-Oriented Programming principles. This system allows users to add books, register users, issue and return books, and display records. 
 
 ## Tools Used:
 - Java (JDK)
