@@ -1,24 +1,24 @@
 package Day3_task;
 
 public class Book {
-    
+
+    int id;
     String title;
-    boolean isIssued; // whether the book is issued or not
+    boolean isIssued;
 
-    public Book(String title) {
+    public Book(int id, String title) {
+        this.id = id;
         this.title = title;
-        this.isIssued = false;// by default book is not issued
+        this.isIssued = false;
     }
 
-    //mark the book as issued
-    public void issue() {
-        isIssued = true;
-    }
-
-    //mark the book as returned
-    public void returnBook() {
-        isIssued = false;
+    public void display() {
+        System.out.println("Book ID: " +id+ ", Title: " +title+ ", Issued: " + isIssued);
     }
 }
+
+
+
+
 
 
